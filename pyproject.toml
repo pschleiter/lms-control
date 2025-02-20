@@ -28,9 +28,9 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/Patrick Schleiter/lms-control#readme"
-Issues = "https://github.com/Patrick Schleiter/lms-control/issues"
-Source = "https://github.com/Patrick Schleiter/lms-control"
+Documentation = "https://github.com/pschleiter/lms-control#readme"
+Issues = "https://github.com/pschleiter/lms-control/issues"
+Source = "https://github.com/pschleiter/lms-control"
 
 [project.scripts]
 lms = "lms_control.cli:cli"
