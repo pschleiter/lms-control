@@ -54,7 +54,7 @@ def players(url: str) -> None:
         click.echo(f' - {player.name} ({player.model_name} @{player.ip})')
 
 
-def _select_player(player_name: str, server: MediaServer) -> Player:
+def _select_player(player_name: str | None, server: MediaServer) -> Player:
     if player_name is None:
         player_name = click.prompt(
             'Select a player',

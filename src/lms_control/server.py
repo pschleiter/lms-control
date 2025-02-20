@@ -6,7 +6,7 @@ import urllib
 import httpx
 
 from lms_control import exc
-from lms_control.player import Player
+from lms_control.player import Player, PlayerInformation
 
 
 def validate_server_url(url: str) -> None:
@@ -45,7 +45,9 @@ class MediaServer:
     @property
     def players(self) -> list[Player]:
         return [
-            Player.player_from_information(player_information=info, client=self._client)
+            Player.player_from_information(
+                player_information=PlayerInformation(**info), client=self._client
+            )
             for info in self._send_command(command='players 0')['players_loop']
         ]
 

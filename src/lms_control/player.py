@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from enum import Enum, IntEnum
-from typing import Any
+from typing import Any, NamedTuple
 
 import httpx
 from lms_control import exc
@@ -26,6 +26,24 @@ class Repeat(IntEnum):
 
 
 MAX_VOLUME = 100
+
+
+class PlayerInformation(NamedTuple):
+    playerindex: str
+    playerid: str
+    uuid: str | None
+    ip: str
+    name: str
+    seq_no: int
+    model: str
+    modelname: str
+    power: int
+    isplaying: int
+    displaytype: str
+    isplayer: int
+    canpoweroff: int
+    connected: int
+    firmware: str
 
 
 class Player:
@@ -86,13 +104,13 @@ class Player:
 
     @classmethod
     def player_from_information(
-        cls, player_information: dict[str, str | int | None], client: httpx.Client
+        cls, player_information: PlayerInformation, client: httpx.Client
     ) -> Player:
         return cls(
-            player_id=player_information['playerid'],
-            name=player_information['name'],
-            ip=player_information['ip'],
-            model_name=player_information['modelname'],
+            player_id=player_information.playerid,
+            name=player_information.name,
+            ip=player_information.ip,
+            model_name=player_information.modelname,
             client=client,
         )
 
